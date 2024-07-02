@@ -1,0 +1,26 @@
+{
+  "name": "pactore.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Mirza",
+    "email": "sayheymirza@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fastest-express-validator": "^1.9.4",
+    "http-proxy": "^1.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
