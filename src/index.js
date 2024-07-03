@@ -9,9 +9,6 @@ const proxy = httpProxy.createProxyServer({
     secure: false,
     hostRewrite: true,
     autoRewrite: true,
-    agent: new https.Agent({
-        rejectUnauthorized: true,
-    }),
 });
 
 const database = require('./core/database');
@@ -78,7 +75,11 @@ app.all('*', (req, res) => {
     const item = data[host.replace(`.${DOMAIN}`, '')];
 
     if (item) {
-        proxy.web(req, res, { target: item });
+        proxy.web(req, res, {
+            target: item, agent: item.startsWith('https') ? new https.Agent({
+                rejectUnauthorized: true,
+            }) : undefined,
+        });
     } else {
         res.status(404).send('Page not found.')
     }
